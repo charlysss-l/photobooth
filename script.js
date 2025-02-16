@@ -9,6 +9,8 @@ const maxPhotos = 4;
 let photos = [];
 let photoCount = 0;
 let stream = null;
+let countdown = 3; 
+let countdownInterval;
 
 
 function startCamera() {
@@ -16,7 +18,7 @@ function startCamera() {
         .then(camStream => {
             stream = camStream;
             video.srcObject = stream;
-            video.style.transform = "scaleX(-1)"
+            video.style.transform = "scaleX(-1)";
         })
         .catch(error => {
             alert("Camera access denied! Please allow camera permissions.");
@@ -25,10 +27,27 @@ function startCamera() {
 }
 
 
-startCamera();
-
 captureButton.addEventListener('click', () => {
+    captureButton.disabled = true; 
+
+    countdown = 3;
+    counterDisplay.textContent = `Starting in ${countdown}s`;
+    countdownInterval = setInterval(updateCountdown, 1000);
+});
+
+function updateCountdown() {
+    countdown--;
+    counterDisplay.textContent = `Starting in ${countdown}s`;
+
+    if (countdown <= 0) {
+        clearInterval(countdownInterval); 
+        capturePhoto();
+    }
+}
+
+function capturePhoto() {
     if (photoCount < maxPhotos) {
+
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
@@ -38,21 +57,30 @@ captureButton.addEventListener('click', () => {
 
         counterDisplay.textContent = `Captured ${photoCount}/${maxPhotos}`;
 
-        if (photoCount === maxPhotos) {
+        if (photoCount < maxPhotos) {
+
+            countdown = 3; 
+            setTimeout(() => {
+                counterDisplay.textContent = `Starting in ${countdown}s`;
+                countdownInterval = setInterval(updateCountdown, 1000);
+            }, 1000); 
+        } else {
             captureButton.style.display = "none"; 
             printButton.style.display = "block"; 
-          
+            
             if (stream) {
                 stream.getTracks().forEach(track => track.stop());
             }
             video.style.display = "none"; 
         }
     }
-});
+}
+
 
 printButton.addEventListener('click', () => {
-    
     sessionStorage.setItem('photos', JSON.stringify(photos));
-    
     window.location.href = 'photostrip.html';
 });
+
+
+startCamera();
