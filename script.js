@@ -30,6 +30,7 @@ let countdown = 3;
 let countdownInterval;
 
 
+//startCamera function: request permission from user to access webcam
 function startCamera() {
     //navigator.mediaDevices.getUserMedia() API -paa ma-access yung webcam and microphone from user's device
     navigator.mediaDevices.getUserMedia({ video: true })
@@ -39,22 +40,27 @@ function startCamera() {
             stream = camStream;
             //live feed from webcam display sa loob ng html
             video.srcObject = stream;
+            //mirror camera feed
             video.style.transform = "scaleX(-1)";
         })
+        //catch error if user denies camera or other issue occure pagina-access camera
         .catch(error => {
             alert("Camera access denied! Please allow camera permissions.");
             console.error("Error accessing camera:", error);
         });
 }
 
-
+//captureButton eventListener: when clicked function executed
 captureButton.addEventListener('click', () => {
+    //captureButton is disabled once clicked. para maprevent user from clicking it multiple times
+    
     captureButton.disabled = true; 
 
     countdown = 3;
     counterDisplay.textContent = `Starting in ${countdown}s`;
     countdownInterval = setInterval(updateCountdown, 1000);
 });
+
 
 function updateCountdown() {
     countdown--;

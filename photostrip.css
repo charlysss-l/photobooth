@@ -9,7 +9,7 @@ body {
 .photostrip { 
     width: 320px;
     margin: auto;
-    padding: 10px;
+    padding: 40px 40px 10px 40px;
     background: white;
     border: 2px solid black;
     display: flex;
@@ -19,16 +19,18 @@ body {
 
 .photostrip img { 
     width: 100%;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     transform: scaleX(-1);
 }
 
 h1 { 
-    margin: 10px;
+    margin-bottom: 30px;
     font-size: 15px;
     font-family:Arial, Helvetica, sans-serif;
     text-transform: lowercase;
     text-align: center;
+    font-weight: 300;
+    letter-spacing: 10px;
 }
 
 button { 
