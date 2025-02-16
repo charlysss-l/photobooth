@@ -53,21 +53,27 @@ function startCamera() {
 //captureButton eventListener: when clicked function executed
 captureButton.addEventListener('click', () => {
     //captureButton is disabled once clicked. para maprevent user from clicking it multiple times
-    
     captureButton.disabled = true; 
-
+    //initialize countdown to 3secs
     countdown = 3;
+    //updates text content of counterDisplay element to display message Starting in 3s
     counterDisplay.textContent = `Starting in ${countdown}s`;
+    //will repeatedly call setInterval method every 1000 milliseconds (1second)
     countdownInterval = setInterval(updateCountdown, 1000);
 });
 
-
+//Responsible for decreasing countdown timer every second
 function updateCountdown() {
+    //decrease value by 1 each tie function runs. First call: countdown = 3. Second call: countdown = 2 ... to countdown = 0 (stops countdown)
     countdown--;
+    //updates display countdown on sceen
     counterDisplay.textContent = `Starting in ${countdown}s`;
 
+    //check if countdown reach 0 or below
     if (countdown <= 0) {
+        //stops countdown by clearing setInterval() function that updating countdown every second
         clearInterval(countdownInterval); 
+        //calls capturePhoto function to automaticall take picture once countdown reaches 0
         capturePhoto();
     }
 }
