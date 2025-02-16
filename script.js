@@ -1,22 +1,43 @@
+//Para ma-access yung live feed ng camera, in real-time
 const video = document.getElementById('camera');
+
+//Use current frame from the camera, it can saved as images by converting canvas into data URL
 const canvas = document.getElementById('canvas');
+
+//Pagnaclick na ni user itong button na to, photo capture from live video 
 const captureButton = document.getElementById('capture');
+
+// Once user captured desired number of photos this button allow to pint
 const printButton = document.getElementById('print');
+
+//shows countdown before each photo taken Capture 1/4...
 const counterDisplay = document.getElementById('counter');
 
+//ctx variable use to draw captured frame(photo) from video feed onto canvas
 const ctx = canvas.getContext('2d');
+//maximum number ng photos limit to 4
 const maxPhotos = 4;
+//empty array called photos. as photo captured from vide0 pwede save as base64 data URLs allows to store multiple photos for later use
+//each photo captured is added in this array
 let photos = [];
+//use to track number of photos use has taken. each captured is incremented. use for Captured 1/4
 let photoCount = 0;
+//stream used to store live video once camera accessed. later used to stop webcam when photo capture completed
 let stream = null;
+//countdown variable set to 3 seconds
 let countdown = 3; 
+//countdownInterval variable stores the reference to the interval timer for the countdown
 let countdownInterval;
 
 
 function startCamera() {
+    //navigator.mediaDevices.getUserMedia() API -paa ma-access yung webcam and microphone from user's device
     navigator.mediaDevices.getUserMedia({ video: true })
+        //.then() use to handle Promise that getUserMedia returns. camStream is variable that hold the media steam from camera once granted
         .then(camStream => {
+            //para magamit later to stop camera from other manipulation
             stream = camStream;
+            //live feed from webcam display sa loob ng html
             video.srcObject = stream;
             video.style.transform = "scaleX(-1)";
         })
