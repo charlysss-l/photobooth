@@ -16,6 +16,7 @@ function startCamera() {
         .then(camStream => {
             stream = camStream;
             video.srcObject = stream;
+            video.style.transform = "scaleX(-1)"
         })
         .catch(error => {
             alert("Camera access denied! Please allow camera permissions.");
