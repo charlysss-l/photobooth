@@ -2,7 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-   
+    
     color: black;
     text-align: center; 
 }
@@ -71,7 +71,12 @@ section {
     align-items: center;
     flex-direction: column;
     height: 100vh;
-    padding-top: 80px; /
+    padding-top: 80px; 
+    background: url(images/about.jpg);
+    min-height: 500px;
+    background-size: cover;
+    background-attachment: fixed;
+    color: white;
 }
 
 .intro {
@@ -83,9 +88,10 @@ section {
 }
 
 .intro h2 {
-    font-size: 28px;
+    font-size: 35px;
     margin-bottom: 20px;
-    color: rgb(217, 106, 125);
+    color: rgb(255, 255, 255);
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.862);
 }
 
 .intro p {
@@ -102,7 +108,7 @@ section {
     align-items: center;
     flex-direction: column;
     height: 100vh;
-    padding-top: 80px; /
+    padding-top: 80px; 
  
 }
 
@@ -114,29 +120,41 @@ section {
 
 .featuresList {
     display: flex;
-    flex-direction: row; /* Change to row to display the items horizontally */
+    flex-direction: row; 
     justify-content: center;
+    align-items: center;
     padding: 0;
     margin: 0;
     list-style: none;
-    background-color: red; /* Add background color red to the list */
-    width: 100%; /* Ensure it takes full width */
-    flex-wrap: wrap; /* Allow items to wrap if necessary */
+    width: 100%; 
+    flex-wrap: wrap; 
     box-sizing: border-box;
 }
 
 .featureItem {
     font-size: 18px;
-    width: 25%; /* Adjust width to fit the items side by side */
-    padding: 10px;
+    width: 22%; 
+    height: 250px;
+    margin: 10px; 
+    padding: 20px;
     box-sizing: border-box;
     line-height: 1.6;
-    color: white; /* Ensure text is readable on red background */
+    border: 1px solid rgb(0, 0, 0);
+    color: rgb(0, 0, 0);
+    background-color: #ffffff;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featureItem:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
 }
 
 .featureTitle {
     color: rgb(217, 106, 125);
     font-weight: bold;
+    margin-bottom: 10px; 
 }
 
 /* FOOTER */
