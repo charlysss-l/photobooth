@@ -76,6 +76,7 @@ video {
 
 #capture, #print {
     background: white;
+    box-shadow: 1px 1px 1px 1px black;
     width: 200px;
     height: 50px;
     border-radius: 8px;
@@ -89,7 +90,7 @@ video {
 
 #print:hover, #capture:hover {
     transform: scale(1.1);
-    background: rgb(228, 216, 216);
+    background: rgb(251, 248, 248);
 }
 
 #counter {

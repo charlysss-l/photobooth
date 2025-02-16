@@ -2,15 +2,16 @@
 body { 
     text-align: center; 
     font-family: Arial, sans-serif; 
+    height: 100vh;
 }
 
 
 .photostrip { 
     width: 320px;
     margin: auto;
-    padding: 10px;
+    padding: 40px;
     background: white;
-    border: 2px solid black;
+    border: 2px solid rgba(0, 0, 0, 0.562);
     display: flex;
     flex-direction: column;  
     align-items: center;
@@ -22,17 +23,26 @@ body {
 }
 
 h1 { 
-    margin: 10px;
+    
     font-size: 15px;
     font-family:Arial, Helvetica, sans-serif;
     font-weight: 200;
-    text-transform: lowercase;
+    text-transform:lowercase;
     text-align: center;
+    margin-bottom: 30px;
+  
 }
 
 button { 
-    margin-top: 10px;
-    padding: 10px 15px; 
-    font-size: 16px; 
-    cursor: pointer; 
+    background: white;
+    box-shadow: 1px 1px 1px 1px black;
+    width: 200px;
+    height: 50px;
+    border-radius: 8px;
+    font-size: 15px;
+    text-transform: uppercase;
+    margin-top: 20px; 
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
 }
