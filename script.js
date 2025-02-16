@@ -78,6 +78,7 @@ function updateCountdown() {
     }
 }
 
+//capturePhoto() Function: captures photo from video feed, stores, update counter, start another countdown
 function capturePhoto() {
     if (photoCount < maxPhotos) {
 
