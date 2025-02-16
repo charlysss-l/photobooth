@@ -1,0 +1,39 @@
+
+body { 
+    text-align: center; 
+    font-family: Arial, sans-serif; 
+    background: white; 
+}
+
+
+.photostrip { 
+    width: 320px;
+    margin: auto;
+    padding: 10px;
+    background: white;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;  
+    align-items: center;
+}
+
+.photostrip img { 
+    width: 100%;
+    margin-bottom: 5px;
+}
+
+h1 { 
+    margin: 10px;
+    font-size: 15px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-weight: 200;
+    text-transform: lowercase;
+    text-align: center;
+}
+
+button { 
+    margin-top: 10px;
+    padding: 10px 15px; 
+    font-size: 16px; 
+    cursor: pointer; 
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photostrip</title>
+    <link rel="stylesheet" href="photostrip.css">
+</head>
+<body>
+
+    <div class="photostrip"> <h1>Photobooth</h1></div>
+    
+
+    <button onclick="savePhotostrip()">Save</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script>
+        const photos = JSON.parse(sessionStorage.getItem('photos') || '[]');
+        const photostripContainer = document.querySelector('.photostrip');
+        photos.forEach(src => {
+            const img = document.createElement('img');
+            img.src = src;
+            photostripContainer.appendChild(img);
+        });
+
+        function savePhotostrip() {
+            html2canvas(photostripContainer).then(canvas => {
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/png');
+                link.download = 'photostrip.png';
+                link.click();
+            });
+        }
+    </script>
+</body>
+</html>
