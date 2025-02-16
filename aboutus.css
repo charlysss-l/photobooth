@@ -1,12 +1,23 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+   
+    color: black;
+    text-align: center; 
+}
+
 /*NAVBAR*/
 header {
+
     width: 100%;
     padding: 10px px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.022);
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 1000;
+    z-index: 1;
+    background-color: white;
 }
 
 nav {
@@ -45,4 +56,100 @@ li a {
 
 li a:hover {
   color: rgb(217, 106, 125);;
+}
+
+/* SECTION */
+section {
+    width: 100%;
+    padding: 20px;
+}
+
+/* INTRO */
+.container-intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    padding-top: 80px; /
+}
+
+.intro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.intro h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: rgb(217, 106, 125);
+}
+
+.intro p {
+    font-size: 18px;
+    max-width: 80%;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* FEATURES */
+.container-features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    padding-top: 80px; /
+ 
+}
+
+.features h2 {
+    font-size: 26px;
+    margin-bottom: 20px;
+    color: rgb(217, 106, 125);
+}
+
+.featuresList {
+    display: flex;
+    flex-direction: row; /* Change to row to display the items horizontally */
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    background-color: red; /* Add background color red to the list */
+    width: 100%; /* Ensure it takes full width */
+    flex-wrap: wrap; /* Allow items to wrap if necessary */
+    box-sizing: border-box;
+}
+
+.featureItem {
+    font-size: 18px;
+    width: 25%; /* Adjust width to fit the items side by side */
+    padding: 10px;
+    box-sizing: border-box;
+    line-height: 1.6;
+    color: white; /* Ensure text is readable on red background */
+}
+
+.featureTitle {
+    color: rgb(217, 106, 125);
+    font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+    font-size: 10px;
+    text-align: center;
+    bottom: 0;
+    width: 100%;
+    padding: 10px 0;
+    background-color: #fff; /* Add a background to footer */
+}
+
+.span-github {
+    color: rgb(217, 106, 125);
+    text-decoration: none;
 }
