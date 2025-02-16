@@ -80,41 +80,50 @@ function updateCountdown() {
 
 //capturePhoto() Function: captures photo from video feed, stores, update counter, start another countdown
 function capturePhoto() {
+    //ensues user hasn't reach max of 4 photos/ if taken no further picture captures.
     if (photoCount < maxPhotos) {
-
+        //sets canvas size to draw frame from video feed onto canvas
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
+        //converts canvas image to PNG format .
         photos.push(canvas.toDataURL('image/png'));
+        //increases photoCount to tack how many photos taken 
         photoCount++;
 
+        //update photo count display on screen. After 1st photo: "Captured 1/4" After 2nd photo: "Captured 2/4"
         counterDisplay.textContent = `Captured ${photoCount}/${maxPhotos}`;
 
+        //if there are still photos to capture it waits 1 second before restarting countdown
         if (photoCount < maxPhotos) {
-
             countdown = 3; 
             setTimeout(() => {
                 counterDisplay.textContent = `Starting in ${countdown}s`;
                 countdownInterval = setInterval(updateCountdown, 1000);
             }, 1000); 
+            //hides Capture button show Print button
         } else {
             captureButton.style.display = "none"; 
             printButton.style.display = "block"; 
             
+            //stop camera stream to save resources
             if (stream) {
                 stream.getTracks().forEach(track => track.stop());
             }
+            //hides video feed
             video.style.display = "none"; 
         }
     }
 }
 
-
+//pintButton: detects when pint button is clicked. only visible after capturing all 4 images
 printButton.addEventListener('click', () => {
+    //converts photos array to a string using JSON.stringify(photos). stores phootos in sessionStorage under key "photos"
     sessionStorage.setItem('photos', JSON.stringify(photos));
+    //redirect user to photostrip.html. the page that retrieve store photos from sessionStorage
     window.location.href = 'photostrip.html';
 });
 
-
+// immediately runs startCamera function: when script executed. placing at bottom meqans page is fully loaded before attempting access tp camera
 startCamera();
